@@ -46,6 +46,9 @@ Include a timer that moves to the next person if the user is not clicking on nex
 var TRANSITION_TIME = 10; // in seconds
 var STARTING_INDEX = 0; // in seconds
 
+var currentIndex = STARTING_INDEX;
+var maxIndex = 0;
+
 $(document).ready(function(){
   $.ajax({
     type: "GET",
@@ -54,32 +57,47 @@ $(document).ready(function(){
         mainProcess(data);
     }
   });
+
+//================ event listeners ===============
+$("#prev-button").on("click", prevClicked());
+$("#next-button").on("click", nextClicked());
+
 });
 
+//================ functions =====================
 function mainProcess(data) {
   var sigmanauts = data.sigmanauts;
+  maxIndex = data.sigmanauts.length;
   initDom(sigmanauts);
 
 }
 
 function initDom(sigmanauts) {
   console.log(sigmanauts);
-  displayPerson(sigmanauts[0]);
-  displayCarousel(sigmanauts, STARTING_INDEX);
+  displayCarousel(sigmanauts, currentIndex);
 }
 
-function displayCarousel(sigmanauts, startIdx) {
+function displayCarousel(sigmanauts, currentIndex) {
   for (var i = 0; i < sigmanauts.length; i++) {
     $("#carousel-container").append('<div class="slide" data="' + i + '"></div>');
-    if (i === startIdx) {
+    if (i === currentIndex) {
       var $el = $("#carousel-container").children().last();
       $el.addClass("primary");
     }
   }
+  displayPerson(sigmanauts[0]);
 }
 
 function displayPerson(person) {
   $("#person-container").append('<p class="person-fact">' + person.name + '</p>');
   $("#person-container").append('<p class="person-fact">' + person.git_username + '</p>');
   $("#person-container").append('<p class="person-fact">' + person.shoutout + '</p>');
+}
+
+function prevClicked() {
+
+}
+
+function nextClicked() {
+
 }
