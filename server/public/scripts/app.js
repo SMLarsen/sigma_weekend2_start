@@ -44,7 +44,7 @@ Include a timer that moves to the next person if the user is not clicking on nex
 //create next button
 
 var TRANSITION_TIME = 10; // in seconds
-var STARTING_INDEX = 5; // in seconds
+var STARTING_INDEX = 0; // in seconds
 
 $(document).ready(function(){
   $.ajax({
@@ -79,7 +79,7 @@ function displayCarousel(sigmanauts, startIdx) {
 }
 
 function displayPerson(person) {
-  $("#person-container").append('<p>' + person.name + '</p>');
-  $("#person-container").append('<p>' + person.git_username + '</p>');
-  $("#person-container").append('<p>' + person.shoutout + '</p>');
+  $("#person-container").append('<p class="person-fact">' + person.name + '</p>');
+  $("#person-container").append('<p class="person-fact">' + person.git_username + '</p>');
+  $("#person-container").append('<p class="person-fact">' + person.shoutout + '</p>');
 }

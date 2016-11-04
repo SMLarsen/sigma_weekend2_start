@@ -1,3 +1,18 @@
+body {
+  font-family: sans-serif;
+}
+
+button {
+  width: 100px;
+  height: 40px;
+  margin: 25px;
+}
+
+.person-fact {
+  width: 700px;
+}
+
+
 .slide {
   width: 35px;
   height: 35px;
