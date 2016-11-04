@@ -1,0 +1,11 @@
+.slide {
+  width: 35px;
+  height: 35px;
+  background-color: slategrey;
+  border: 1px solid black;
+  display: inline-block;
+}
+
+.primary {
+  background: darkslategrey;
+}
