@@ -64,7 +64,7 @@ function mainProcess(data) {
 
 function buildCarousel(sigmanauts, currentIndex) {
   for (var i = 0; i < sigmanauts.length; i++) {
-    var string = '<section  class="stage">' +
+    var string = '<section  class="slide-stage">' +
       '<div class="slide" id="sigma' + i +
       '"><span class="shadow"></span>' +
       '</span></div></section>';

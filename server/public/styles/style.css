@@ -7,20 +7,79 @@ body {
 }
 
 h1 {
+  flex-flow: row;
   text-align: center;
 }
 
 #person-container {
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+}
+
+#person-container p {
   text-align: justify;
-  margin-top: 40px;
-  height: 150px;
+  font-size: 1.15em;
+  padding: 5px 0;
+}
+
+#button-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 75px;
+}
+
+#carousel-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-stage {
+  width: 180px;
+  height: 40px;
+  display: inline-block;
+  margin: 3px;
+  perspective: 180px;
+  perspective-origin: 50% 50%;
 }
 
 button {
-  width: 150px;
+  width: 180px;
   height: 40px;
   margin: 0 25px;
   background-color: #76deef;
+  display: inline-block;
+  border: 0;
+  border-radius: 10%;
+  position: relative;
+  background: radial-gradient(circle at 50% 120%, #81e8f6, #76deef 10%, #055194 80%, darkslategrey 100%);
+}
+
+button:before {
+  content: "";
+  position: absolute;
+  top: 1%;
+  left: 5%;
+  width: 90%;
+  height: 90%;
+  border-radius: 50%;
+  /*background: radial-gradient(circle at 50% 0px, #ffffff, rgba(255, 255, 255, 0) 58%);*/
+  filter: blur(20px);
+  z-index: 2;
+}
+
+button:after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 5%;
+  left: 10%;
+  border-radius: 25%;
 }
 
 .person-fact {
@@ -32,31 +91,13 @@ button {
   padding: 0 20%;
 }
 
-/*.slide {
-  background: black;
-  border-radius: 50%;
-  height: 45px;
-  width: 45px;
-  margin: 0;
-  display: inline-block;
-  background: radial-gradient(circle at 15px 15px, slategrey, #000);
-}*/
-
-.stage {
+.slide-stage {
   width: 45px;
   height: 45px;
   display: inline-block;
   margin: 3px;
   perspective: 180px;
   perspective-origin: 50% 50%;
-}
-.slide .shadow {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1) 40%, rgba(0, 0, 0, 0) 50%);
-  transform: rotateX(90deg) translateZ(-25px);
-  z-index: -1;
 }
 
 .slide {
@@ -67,11 +108,20 @@ button {
   border-radius: 50%;
   position: relative;
   background: radial-gradient(circle at 50% 120%, #81e8f6, #76deef 10%, #055194 80%, #062745 100%);
-  animation: bubble-anim 5s ease-out infinite;
+}
+
+.slide .shadow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1) 40%, rgba(0, 0, 0, 0) 50%);
+  transform: rotateX(90deg) translateZ(-25px);
+  z-index: -1;
 }
 
 .active {
   background: radial-gradient(circle at 50% 120%, #81e8f6, #76deef 10%, green 80%, #062745 100%);
+  animation: bubble-anim 5s ease-out infinite;
 }
 .slide:before {
   content: "";
