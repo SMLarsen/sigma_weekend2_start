@@ -59,45 +59,65 @@ $(document).ready(function(){
   });
 
 //================ event listeners ===============
-$("#prev-button").on("click", prevClicked());
-$("#next-button").on("click", nextClicked());
+$("#prev-button").on("click", prevClicked);
+$("#next-button").on("click", nextClicked);
 
 });
 
 //================ functions =====================
 function mainProcess(data) {
   var sigmanauts = data.sigmanauts;
-  maxIndex = data.sigmanauts.length;
+  maxIndex = data.sigmanauts.length - 1;
   initDom(sigmanauts);
 
 }
 
 function initDom(sigmanauts) {
-  console.log(sigmanauts);
-  displayCarousel(sigmanauts, currentIndex);
+  buildCarousel(sigmanauts, currentIndex);
 }
 
-function displayCarousel(sigmanauts, currentIndex) {
+function buildCarousel(sigmanauts, currentIndex) {
   for (var i = 0; i < sigmanauts.length; i++) {
-    $("#carousel-container").append('<div class="slide" data="' + i + '"></div>');
+    $("#carousel-container").append('<div class="slide" id="peeps' + i + '"></div>');
+    var $el = $("#carousel-container").children().last();
+    $el.data("name", sigmanauts[i].name);
+    $el.data("git-username", sigmanauts[i].git_username);
+    $el.data("shoutout", sigmanauts[i].shoutout);
+    $("#carousel-container").children().removeClass("primary");
     if (i === currentIndex) {
-      var $el = $("#carousel-container").children().last();
-      $el.addClass("primary");
+      $el.css("background-color", "darkslategrey");
     }
   }
-  displayPerson(sigmanauts[0]);
+
+  displayPerson(sigmanauts[currentIndex].name,
+    sigmanauts[currentIndex].git_username,
+    sigmanauts[currentIndex].shoutout
+  );
 }
 
-function displayPerson(person) {
-  $("#person-container").append('<p class="person-fact">' + person.name + '</p>');
-  $("#person-container").append('<p class="person-fact">' + person.git_username + '</p>');
-  $("#person-container").append('<p class="person-fact">' + person.shoutout + '</p>');
+function displayPerson(name, gitUsername, shoutout) {
+  $("#person-container").append('<p class="person-fact" id="name">' + name + '</p>');
+  $("#person-container").append('<p class="person-fact" id="git-username">' + gitUsername + '</p>');
+  $("#person-container").append('<p class="person-fact" id="shoutout">' + shoutout + '</p>');
+}
+
+function changePerson(index) {
+  var name = $("#peeps" + index).data('name');
+  var gitUsername = $("#peeps" + index).data('git-username');
+  var shoutout = $("#peeps" + index).data('shoutout');
+  console.log(name, gitUsername, shoutout);
+  $("#name").text(name);
+  $("#git-username").text(gitUsername);
+  $("#shoutout").text(shoutout);
 }
 
 function prevClicked() {
-
+  $el = $("#carousel-container").find();
+  currentIndex = currentIndex === 0 ? maxIndex : currentIndex - 1;
+  changePerson(currentIndex);
 }
 
-function nextClicked() {
-
+function nextClicked(person) {
+  currentIndex = currentIndex === maxIndex ? 0 : currentIndex + 1;
+  changePerson(currentIndex);
 }
