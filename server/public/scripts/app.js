@@ -37,11 +37,11 @@ Include a timer that moves to the next person if the user is not clicking on nex
 */
 //Backlog
 //get data from data file - done
-//post info about a person
-//create a Carousel with one item for each person
+//post info about a person -done
+//create a Carousel with one item for each person -done
 //update carousel to show which person is active
-//create prev button
-//create next button
+//create prev button - done
+//create next button - done
 
 var TRANSITION_TIME = 10; // in seconds
 var STARTING_INDEX = 0; // in seconds
@@ -105,10 +105,11 @@ function changePerson(index) {
   var name = $("#peeps" + index).data('name');
   var gitUsername = $("#peeps" + index).data('git-username');
   var shoutout = $("#peeps" + index).data('shoutout');
-  console.log(name, gitUsername, shoutout);
   $("#name").text(name);
   $("#git-username").text(gitUsername);
   $("#shoutout").text(shoutout);
+  $("#carousel-container").children().css("background-color", "slategrey");
+  $("#peeps" + index).css("background-color", "darkslategrey");
 }
 
 function prevClicked() {
