@@ -108,7 +108,7 @@ function changePerson(index) {
   $("#name").text(name);
   $("#git-username").text(gitUsername);
   $("#shoutout").text(shoutout);
-  $("#carousel-container").children().css("background-color", "slategrey");
+  $("#carousel-container").children().css("background-color", "lightgrey");
   $("#peeps" + index).css("background-color", "darkslategrey");
 }
 

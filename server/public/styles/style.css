@@ -1,7 +1,8 @@
 body {
   font-family: sans-serif;
+  font-size: 1.5em;
   margin: 0 20%;
-  background-color: lightslategrey;
+  background-color: slategrey;
   color: white;
 }
 
@@ -25,13 +26,13 @@ button {
 }
 
 .form-group {
-  padding: 0 20% 1% 30%;
+  padding: 0 10% 1% 20%;
 }
 
 .slide {
-  width: 40px;
-  height: 40px;
-  background-color: lightslategrey;
+  width: 35px;
+  height: 35px;
+  background-color: lightgrey;
   border: 1px solid black;
   display: inline-block;
 }
