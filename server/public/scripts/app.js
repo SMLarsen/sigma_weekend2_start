@@ -78,15 +78,21 @@ function initDom(sigmanauts) {
 
 function buildCarousel(sigmanauts, currentIndex) {
   for (var i = 0; i < sigmanauts.length; i++) {
-    $("#carousel-container").append('<div class="slide" id="peeps' + i + '"></div>');
+    var string = '<section  class="stage">' +
+      '<div class="slide" id="peeps' + i +
+      '"><span class="shadow"></span>' +
+      // '"><span class="shadow"></span><span class="iris">' +
+      '</span></div></section>';
+
+    $("#carousel-container").append(string);
     var $el = $("#carousel-container").children().last();
     $el.data("name", sigmanauts[i].name);
     $el.data("git-username", sigmanauts[i].git_username);
     $el.data("shoutout", sigmanauts[i].shoutout);
     $("#carousel-container").children().removeClass("primary");
-    if (i === currentIndex) {
-      $el.css("background-color", "darkslategrey");
-    }
+    // if (i === currentIndex) {
+    //   $el.css("background-color", "darkslategrey");
+    // }
   }
 
   displayPerson(sigmanauts[currentIndex].name,
@@ -108,8 +114,8 @@ function changePerson(index) {
   $("#name").text(name);
   $("#git-username").text(gitUsername);
   $("#shoutout").text(shoutout);
-  $("#carousel-container").children().css("background-color", "lightgrey");
-  $("#peeps" + index).css("background-color", "darkslategrey");
+  // $("#carousel-container").children().css("background-color", "lightgrey");
+  // $("#peeps" + index).css("background-color", "darkslategrey");
 }
 
 // function loopClicker() {

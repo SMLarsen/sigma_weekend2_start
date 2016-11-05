@@ -1,8 +1,8 @@
 body {
   font-family: sans-serif;
   font-size: 1.5em;
-  margin: 0 20%;
-  background-color: slategrey;
+  margin: 0 10%;
+  background-color: #055194;
   color: white;
 }
 
@@ -12,30 +12,192 @@ h1 {
 
 #person-container {
   text-align: justify;
-  margin-top: 50px;
+  margin-top: 40px;
   height: 150px;
 }
 
 button {
   width: 150px;
   height: 40px;
+  margin: 0 25px;
+  background-color: #76deef;
 }
 
 .person-fact {
-  width: 700px;
+  width: 80%;
+  margin: 0 10%;
 }
 
 .form-group {
-  padding: 0 10% 1% 20%;
+  padding: 0 20%;
+}
+
+/*.slide {
+  background: black;
+  border-radius: 50%;
+  height: 45px;
+  width: 45px;
+  margin: 0;
+  display: inline-block;
+  background: radial-gradient(circle at 15px 15px, slategrey, #000);
+}*/
+
+.stage {
+  width: 45px;
+  height: 45px;
+  display: inline-block;
+  margin: 3px;
+  perspective: 180px;
+  perspective-origin: 50% 50%;
+}
+.slide .shadow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1) 40%, rgba(0, 0, 0, 0) 50%);
+  transform: rotateX(90deg) translateZ(-25px);
+  z-index: -1;
 }
 
 .slide {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  border-radius: 50%;
+  position: relative;
+  background: radial-gradient(circle at 50% 120%, #81e8f6, #76deef 10%, #055194 80%, #062745 100%);
+  animation: bubble-anim 5s ease-out infinite;
+}
+.slide:before {
+  content: "";
+  position: absolute;
+  top: 1%;
+  left: 5%;
+  width: 90%;
+  height: 90%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 0px, #ffffff, rgba(255, 255, 255, 0) 58%);
+  filter: blur(5px);
+  z-index: 2;
+}
+
+.slide:after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 5%;
+  left: 10%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8) 14%, rgba(255, 255, 255, 0) 24%);
+  transform: translateX(-12px) translateY(-15px) skewX(-20deg);
+  filter: blur(2px);
+}
+
+.iris {
+  width: 50%;
+  height: 50%;
+  margin: 30%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 50%, #208ab4 0%, #6fbfff 30%, #4381b2 100%);
+  transform: translateX(9px) translateY(-9px) skewX(15deg) skewY(2deg);
+  position: absolute;
+  animation: move-eye-skew 5s ease-out infinite;
+}
+
+.iris:before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
+  top: 31.25%;
+  left: 31.25%;
+  background: black;
+}
+.iris:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 31.25%;
+  height: 31.25%;
+  border-radius: 50%;
+  top: 18.75%;
+  left: 18.75%;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+@keyframes move-eye-skew {
+  0% {
+    transform: none;
+  }
+  20% {
+    transform: translateX(-9px) translateY(5px) skewX(15deg) skewY(-10deg) scale(0.95);
+  }
+  25%, 44% {
+    transform: none;
+  }
+  50%, 60% {
+    transform: translateX(9px) translateY(-6px) skewX(5deg) skewY(2deg) scaleX(0.95);
+  }
+  66%, 100% {
+    transform: none;
+  }
+}
+
+@keyframes bubble-anim {
+  0% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scaleY(0.90) scaleX(1.10);
+  }
+  48% {
+    transform: scaleY(1.2) scaleX(0.8);
+  }
+  68% {
+    transform: scaleY(0.90) scaleX(1.10);
+  }
+  80% {
+    transform: scaleY(1.10) scaleX(0.90);
+  }
+  97%, 100% {
+    transform: scale(1);
+  }
+}
+
+
+/*@keyframes bubble-anim {
+  0% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scaleY(0.95) scaleX(1.05);
+  }
+  48% {
+    transform: scaleY(1.1) scaleX(0.9);
+  }
+  68% {
+    transform: scaleY(0.98) scaleX(1.02);
+  }
+  80% {
+    transform: scaleY(1.02) scaleX(0.98);
+  }
+  97%, 100% {
+    transform: scale(1);
+  }
+}*/
+
+
+/*.slide {
   width: 35px;
   height: 35px;
   background-color: lightgrey;
   border: 1px solid black;
   display: inline-block;
-}
+}*/
 
 @keyframes fadeInDown {
    0% {
@@ -47,3 +209,43 @@ button {
       transform: translateY(0);
    }
 }
+
+/*.slide {
+  width: 2.5em;
+  height: 2.5em;
+  text-align: center;
+  line-height: 2em;
+  border-radius: 2em;
+  background: lightgrey;
+  /*margin: 0 1em;*/
+  /*display: inline-block;
+  position: relative;
+}
+
+.slicde::before{
+  content: '';
+  position: absolute;
+  top: .9em;
+  left: -4em;
+  width: 4em;
+  height: .2em;
+  background: dodgerblue;
+  z-index: -1;
+}
+
+
+.slide:first-child::before {
+  display: none;
+}
+
+.active {
+  background: dodgerblue;
+}
+
+.active ~ .slide {
+  background: lightblue;
+}
+
+.active ~ .slide::before {
+  background: lightblue;
+}*/
