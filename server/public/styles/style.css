@@ -31,7 +31,18 @@ button {
 .slide {
   width: 40px;
   height: 40px;
-  background-color: slategrey;
+  background-color: lightslategrey;
   border: 1px solid black;
   display: inline-block;
+}
+
+@keyframes fadeInDown {
+   0% {
+      opacity: 0;
+      transform: translateY(-20px);
+   }
+   100% {
+      opacity: 1;
+      transform: translateY(0);
+   }
 }

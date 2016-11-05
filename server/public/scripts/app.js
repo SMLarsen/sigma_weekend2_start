@@ -39,7 +39,7 @@ Include a timer that moves to the next person if the user is not clicking on nex
 //get data from data file - done
 //post info about a person -done
 //create a Carousel with one item for each person -done
-//update carousel to show which person is active
+//update carousel to show which person is active -done
 //create prev button - done
 //create next button - done
 
@@ -69,7 +69,7 @@ function mainProcess(data) {
   var sigmanauts = data.sigmanauts;
   maxIndex = data.sigmanauts.length - 1;
   initDom(sigmanauts);
-
+  setInterval(nextClicked, 10000);
 }
 
 function initDom(sigmanauts) {
@@ -112,13 +112,16 @@ function changePerson(index) {
   $("#peeps" + index).css("background-color", "darkslategrey");
 }
 
+// function loopClicker() {
+//
+// }
+
 function prevClicked() {
-  $el = $("#carousel-container").find();
   currentIndex = currentIndex === 0 ? maxIndex : currentIndex - 1;
   changePerson(currentIndex);
 }
 
-function nextClicked(person) {
+function nextClicked() {
   currentIndex = currentIndex === maxIndex ? 0 : currentIndex + 1;
   changePerson(currentIndex);
 }
