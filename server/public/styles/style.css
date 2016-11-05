@@ -59,6 +59,12 @@ button {
   background: radial-gradient(circle at 50% 120%, #81e8f6, #76deef 10%, #055194 80%, darkslategrey 100%);
 }
 
+button:hover {
+  background-color: #76deef;
+  box-shadow: 10px 10px 5px darkslategrey;
+  background: radial-gradient(circle at 50% 120%, #81e8f6, silver 10%, #055194 80%, darkslategrey 100%);
+}
+
 button:before {
   content: "";
   position: absolute;
@@ -120,7 +126,7 @@ button:after {
 }
 
 .active {
-  background: radial-gradient(circle at 50% 120%, #81e8f6, #76deef 10%, green 80%, #062745 100%);
+  background: radial-gradient(circle at 50% 120%, #81e8f6, #76deef 10%, silver 80%, #062745 100%);
   animation: bubble-anim 5s ease-out infinite;
 }
 .slide:before {
@@ -170,61 +176,28 @@ button:after {
   }
 }
 
-/*.slide {
-  width: 35px;
-  height: 35px;
-  background-color: lightgrey;
-  border: 1px solid black;
-  display: inline-block;
-}*/
+.fadeIn {
+  animation: fadeIn 2s ease-out;
+}
 
-@keyframes fadeInDown {
+.fadeOut {
+  animation: fadeOut 2s ease-out;
+}
+
+@keyframes fadeIn {
    0% {
       opacity: 0;
-      transform: translateY(-20px);
    }
    100% {
       opacity: 1;
-      transform: translateY(0);
    }
 }
 
-/*.slide {
-  width: 2.5em;
-  height: 2.5em;
-  text-align: center;
-  line-height: 2em;
-  border-radius: 2em;
-  background: lightgrey;
-  /*margin: 0 1em;*/
-  /*display: inline-block;
-  position: relative;
+@keyframes fadeOut {
+   0% {
+      opacity: 1;
+   }
+   100% {
+      opacity: 0;
+   }
 }
-
-.slicde::before{
-  content: '';
-  position: absolute;
-  top: .9em;
-  left: -4em;
-  width: 4em;
-  height: .2em;
-  background: dodgerblue;
-  z-index: -1;
-}
-
-
-.slide:first-child::before {
-  display: none;
-}
-
-.active {
-  background: dodgerblue;
-}
-
-.active ~ .slide {
-  background: lightblue;
-}
-
-.active ~ .slide::before {
-  background: lightblue;
-}*/
