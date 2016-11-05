@@ -1,5 +1,17 @@
 body {
   font-family: sans-serif;
+  margin: 0 20%;
+  background-color: lightslategrey;
+}
+
+h1 {
+  text-align: center;
+}
+
+#person-container {
+  text-align: justify;
+  margin-top: 50px;
+  height: 150px;
 }
 
 button {
@@ -11,7 +23,6 @@ button {
 .person-fact {
   width: 700px;
 }
-
 
 .slide {
   width: 35px;
