@@ -55,6 +55,12 @@ $(document).ready(function(){
     event.preventDefault();
     nextClicked();
   });
+
+    $("#carousel-container").on("click", ".slide", function(event) {
+      event.preventDefault();
+      currentIndex = $(this).data('index');
+      changePerson(currentIndex);
+    });
 });
 
 //================ functions =====================
@@ -77,6 +83,7 @@ function buildCarousel(sigmanauts, currentIndex) {
 
     $("#carousel-container").append(string);
     var $el = $("#carousel-container").children().children().last();
+    $el.data("index", i);
     $el.data("name", sigmanauts[i].name);
     $el.data("git-username", sigmanauts[i].git_username);
     $el.data("shoutout", sigmanauts[i].shoutout);
@@ -88,7 +95,7 @@ function buildPerson(sigmanauts, currentIndex) {
   $("#person-container").append('<p class="person-fact animated fadeIn" id="name">' + sigmanauts[currentIndex].name + '</p>');
   $("#person-container").append('<p class="person-fact animated fadeIn" id="git-username">' + '@' + sigmanauts[currentIndex].git_username + '</p>');
   $("#person-container").append('<p class="person-fact animated fadeIn" id="shoutout">' + sigmanauts[currentIndex].shoutout + '</p>');
-  $("#person-container").addClass('fadeIn');
+  $("#person-container").addClass('animated fadeIn');
 }
 
 function changePerson(index) {
