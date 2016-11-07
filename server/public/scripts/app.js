@@ -35,6 +35,7 @@ var STARTING_INDEX = 0;
 
 var currentIndex = STARTING_INDEX;
 var maxIndex = 0;
+var interval = 0;
 
 $(document).ready(function(){
   $.ajax({
@@ -71,7 +72,7 @@ function mainProcess(data) {
   buildCarousel(sigmanauts, currentIndex);
   buildPerson(sigmanauts, currentIndex);
 
-  setInterval(nextClicked, TRANSITION_TIME);
+  var interval = setInterval(nextClicked, TRANSITION_TIME);
 }
 
 function buildCarousel(sigmanauts, currentIndex) {
@@ -79,7 +80,8 @@ function buildCarousel(sigmanauts, currentIndex) {
     var string = '<section  class="slide-stage">' +
       '<div class="slide" id="sigma' + i +
       '"><span class="shadow"></span>' +
-      '</span></div></section>';
+      '<span class="initial">' + getInitial(sigmanauts[i].name) + '</span>' +
+      '</div></section>';
 
     $("#carousel-container").append(string);
     var $el = $("#carousel-container").children().children().last();
@@ -110,6 +112,9 @@ function changePerson(index) {
     // change active slide
     $("#carousel-container").children().children().removeClass("active");
     $("#sigma" + index).addClass("active");
+
+    clearInterval(interval);
+    interval = setInterval(nextClicked, TRANSITION_TIME);
   });
 }
 
@@ -121,4 +126,8 @@ function prevClicked() {
 function nextClicked() {
   currentIndex = currentIndex === maxIndex ? 0 : currentIndex + 1;
   changePerson(currentIndex);
+}
+
+function getInitial(name) {
+  return name.substring(0,1).toUpperCase();
 }
