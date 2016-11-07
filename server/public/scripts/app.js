@@ -65,6 +65,7 @@ $(document).ready(function(){
 });
 
 //================ functions =====================
+// main processing logic
 function mainProcess(data) {
   var sigmanauts = data.sigmanauts;
   maxIndex = data.sigmanauts.length - 1;
@@ -75,6 +76,7 @@ function mainProcess(data) {
   var interval = setInterval(nextClicked, TRANSITION_TIME);
 }
 
+//builds carousel of people
 function buildCarousel(sigmanauts, currentIndex) {
   for (var i = 0; i < sigmanauts.length; i++) {
     var string = '<section  class="slide-stage">' +
@@ -84,6 +86,8 @@ function buildCarousel(sigmanauts, currentIndex) {
       '</div></section>';
 
     $("#carousel-container").append(string);
+
+    // add data attributes to each slide
     var $el = $("#carousel-container").children().children().last();
     $el.data("index", i);
     $el.data("name", sigmanauts[i].name);
@@ -93,12 +97,14 @@ function buildCarousel(sigmanauts, currentIndex) {
   $('#sigma' + currentIndex).addClass('active');
 }
 
+// displays info for individual
 function buildPerson(sigmanauts, currentIndex) {
   $("#person-container").append('<p class="person-fact fadeIn" id="name">' + sigmanauts[currentIndex].name + '</p>');
   $("#person-container").append('<a class="person-fact fadeIn" id="git-username" href="https://github.com/' + sigmanauts[currentIndex].git_username + '">' + '@' + sigmanauts[currentIndex].git_username + '</a>');
   $("#person-container").append('<p class="person-fact fadeIn" id="shoutout">' + sigmanauts[currentIndex].shoutout + '</p>');
 }
 
+// changes active person based on passed index
 function changePerson(index) {
   var sigma = "#sigma" + index;
 
@@ -113,21 +119,30 @@ function changePerson(index) {
     $("#carousel-container").children().children().removeClass("active");
     $("#sigma" + index).addClass("active");
 
-    clearInterval(interval);
-    interval = setInterval(nextClicked, TRANSITION_TIME);
+    // restart timer
+    resetInterval();
   });
 }
 
+// action when previous button clicked
 function prevClicked() {
   currentIndex = currentIndex === 0 ? maxIndex : currentIndex - 1;
   changePerson(currentIndex);
 }
 
+// action when next button clicked
 function nextClicked() {
   currentIndex = currentIndex === maxIndex ? 0 : currentIndex + 1;
   changePerson(currentIndex);
 }
 
+// returns first initial (character) of passed string
 function getInitial(name) {
   return name.substring(0,1).toUpperCase();
+}
+
+//turns off existing interval function and starts new one
+function resetInterval() {
+  clearInterval(interval);
+  interval = setInterval(nextClicked, TRANSITION_TIME);
 }
