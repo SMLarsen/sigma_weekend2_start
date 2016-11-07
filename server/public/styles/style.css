@@ -176,15 +176,15 @@ button:after {
   }
 }
 
-/*.fadeIn {
-  animation: fadeIn;
+.fadeIn {
+  animation: fadeIn 3s;
 }
 
 .fadeOut {
   animation: fadeOut 2s ease-out;
-}*/
+}
 
-/*@keyframes fadeIn {
+@keyframes fadeIn {
    0% {
       opacity: 0;
    }
@@ -200,4 +200,4 @@ button:after {
    100% {
       opacity: 0;
    }
-}*/
+}

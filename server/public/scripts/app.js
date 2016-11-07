@@ -92,19 +92,18 @@ function buildCarousel(sigmanauts, currentIndex) {
 }
 
 function buildPerson(sigmanauts, currentIndex) {
-  $("#person-container").append('<p class="person-fact animated fadeIn" id="name">' + sigmanauts[currentIndex].name + '</p>');
-  $("#person-container").append('<p class="person-fact animated fadeIn" id="git-username">' + '@' + sigmanauts[currentIndex].git_username + '</p>');
-  $("#person-container").append('<p class="person-fact animated fadeIn" id="shoutout">' + sigmanauts[currentIndex].shoutout + '</p>');
-  $("#person-container").addClass('animated fadeIn');
+  $("#person-container").append('<p class="person-fact fadeIn" id="name">' + sigmanauts[currentIndex].name + '</p>');
+  $("#person-container").append('<p class="person-fact fadeIn" id="git-username">' + '@' + sigmanauts[currentIndex].git_username + '</p>');
+  $("#person-container").append('<p class="person-fact fadeIn" id="shoutout">' + sigmanauts[currentIndex].shoutout + '</p>');
 }
 
 function changePerson(index) {
   var sigma = "#sigma" + index;
   $("#person-container").children().remove();
 
-  $("#person-container").append('<p class="person-fact animated fadeIn" id="name">' + $(sigma).data('name') + '</p>');
-  $("#person-container").append('<p class="person-fact animated fadeIn" id="git-username">' + '@' + $(sigma).data('git-username') + '</p>');
-  $("#person-container").append('<p class="person-fact animated fadeIn" id="shoutout">' + $(sigma).data('shoutout') + '</p>');
+  $("#person-container").append('<p class="person-fact fadeIn" id="name">' + $(sigma).data('name') + '</p>');
+  $("#person-container").append('<p class="person-fact fadeIn" id="git-username">' + '@' + $(sigma).data('git-username') + '</p>');
+  $("#person-container").append('<p class="person-fact fadeIn" id="shoutout">' + $(sigma).data('shoutout') + '</p>');
 
   // change active slide
   $("#carousel-container").children().children().removeClass("active");
